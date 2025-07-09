@@ -575,53 +575,92 @@ body {
     max-width: 99vw;
     width: 100%;
     margin-bottom: 0;
+    position: relative;
+    min-height: 420px;
+  }
+  .route-milestone-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--gold) 0%, #fffbe7 100%);
+    transform: translateX(-50%);
+    z-index: 0;
+    border-radius: 3px;
   }
   .milestone-step {
-    min-width: 0;
-    max-width: 99vw;
-    width: 100%;
-    border-radius: 16px;
-    font-size: 1.18em;
-    padding: 4vw 0 4vw 0;
-    margin-bottom: 2vw;
+    width: 80vw;
+    max-width: 260px;
+    border-radius: 14px;
+    font-size: 1.08em;
+    padding: 3vw 0 2vw 0;
+    margin: 0 auto;
+    margin-bottom: 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 3vw;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.10);
+    border: 2px solid var(--gold);
+    position: relative;
+    z-index: 2;
   }
   .milestone-dot {
-    width: 10vw;
-    height: 10vw;
-    min-width: 32px;
-    min-height: 32px;
-    max-width: 44px;
-    max-height: 44px;
-    margin-right: 3vw;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    max-width: 18px;
+    max-height: 18px;
+    margin-bottom: 1vw;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid #fffbe7;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.13);
+    z-index: 3;
+    position: relative;
   }
   .milestone-icon {
-    font-size: 2.2em;
-    margin-right: 2vw;
+    font-size: 2.3em;
+    margin-bottom: 1vw;
+    color: var(--gold-dark);
+    z-index: 3;
+    position: relative;
   }
   .milestone-label {
     font-size: 1.13em;
-    text-align: left;
-    flex: 1;
-    min-width: 0;
+    text-align: center;
+    font-weight: 600;
+    color: #7a6a2f;
+    margin-bottom: 0;
+    margin-top: 0.5vw;
+    z-index: 3;
+    position: relative;
   }
   .milestone-connector {
-    min-width: 0;
-    max-width: 8px;
-    width: 3px;
-    height: 30px;
-    margin: 0 auto 2vw auto;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--gold),
-      var(--gold) 12px,
-      transparent 12px,
-      transparent 22px
-    );
+    width: 4px;
+    height: 32px;
+    background: transparent;
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .milestone-step:not(:last-child)::after {
+    content: '\2193'; /* Downwards arrow Unicode */
+    display: block;
+    font-size: 2em;
+    color: var(--gold-dark);
+    margin: 0 auto;
+    margin-top: 0.5vw;
+    z-index: 4;
+    position: relative;
+    line-height: 1;
   }
   .route-note {
     font-size: 1.01em;
@@ -704,17 +743,22 @@ body {
   }
   .foods-accordion-list {
     width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 3vw;
     align-items: center;
     margin-top: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
   .food-toggle-btn {
     width: 100%;
-    max-width: 99vw;
+    max-width: 400px;
     font-size: 1.13em;
-    padding: 4vw 2vw;
+    padding: 4vw 3vw 4vw 3vw;
     border-radius: 14px;
     margin-bottom: 2vw;
     margin-top: 0;
@@ -725,6 +769,13 @@ body {
     transition: background 0.2s, color 0.2s;
     outline: none;
     border: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-left: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
   }
   .food-toggle-btn.active, .food-toggle-btn:hover {
     background: var(--gold-dark);
@@ -732,27 +783,45 @@ body {
   }
   .food-toggle-content {
     display: none;
-    background: #fffbe7;
-    border-radius: 0 0 14px 14px;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
-    padding: 5vw 3vw;
-    margin-bottom: 2vw;
-    font-size: 1.08em;
+    background: rgba(255,255,255,0.98);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.10);
+    padding: 6vw 3vw 6vw 3vw;
+    margin-bottom: 4vw;
+    font-size: 1.13em;
     color: #6b5e2e;
     animation: fadeInAccordion 0.4s;
     width: 100%;
-    max-width: 99vw;
+    max-width: 400px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-left: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
   }
   .food-toggle-content:not(:last-child) {
     border-bottom: 1px solid #f7e7c6;
     margin-bottom: 3vw;
   }
   .food-desc {
-    font-size: 1.08em;
+    font-size: 1.13em;
     color: #6b5e2e;
     margin-bottom: 2vw;
     line-height: 1.5;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90vw;
+    padding: 0 2vw;
+    box-sizing: border-box;
   }
 }
 @keyframes fadeInAccordion {
